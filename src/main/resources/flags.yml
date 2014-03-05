@@ -1,0 +1,78 @@
+Flag:
+  PotionBlindness:
+    Description: Blinds players as they enter the area.
+    Player: false
+    Default: false
+  PotionConfusion:
+    Description: Warps players vision as they enter the area.
+    Player: false
+    Default: false
+  PotionDamageResistance:
+    Description: Decreases damage dealt to the player in the area.
+    Player: false
+    Default: false
+  PotionFastDigging:
+    Description: Increases dig speed in the area.
+    Player: false
+    Default: false
+  PotionFireResistance:
+    Description: Stops fire damage in the area.
+    Player: false
+    Default: false
+  PotionHealthBoost:
+    Description: Increases the maximum health in the area.
+    Player: false
+    Default: false
+  PotionHunger:
+    Description: Increases hunger in the area.
+    Player: false
+    Default: false
+  PotionIncreaseDamage:
+    Description:  Increases damage dealt in the area.
+    Player: false
+    Default: false
+  PotionInvisibility:
+    Description: Grants invisibility in the area.
+    Player: false
+    Default: false
+  PotionJump:
+    Description: Increases jump height in the area.
+    Player: false
+    Default: false
+  PotionNightVision:
+    Description: Allows a player to see in the dark in the area.
+    Player: false
+    Default: false
+  PotionPoison:
+    Description: Deals damage to a player over time in the area.
+    Player: false
+    Default: false
+  PotionRegeneration:
+    Description:  Regenerates health in the area.
+    Player: false
+    Default: false
+  PotionSaturation:
+    Description: Increases the food level of a player each tick in the area.
+    Player: false
+    Default: false
+  PotionSlow:
+    Description: Decreases movement speed in the area.
+    Player: false
+    Default: false
+  PotionSlowDigging:
+    Description: Decreases dig speed in the area.
+    Player: false
+    Default: false
+  PotionSpeed:
+    Description: Increases movement speed in the area.
+    Player: false
+    Default: false
+  PotionWaterBreathing:
+    Description:  Allows breathing underwater in the area
+    Player: false
+    Default: false
+  PotionWeakness:
+    Description: Decreases damage dealt by the player in the area.
+    Player: false
+    Default: false
+
