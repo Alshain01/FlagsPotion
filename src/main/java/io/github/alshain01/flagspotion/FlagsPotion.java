@@ -69,58 +69,58 @@ public class FlagsPotion extends JavaPlugin {
             final EffectCollectionBuilder effectBuilder = new EffectCollectionBuilder();
 
             Flag flag = flags.get("PotionBlindness");
-            effectBuilder.newEffect(PotionEffectType.BLINDNESS, areaTo.getValue(flag, false), areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.BLINDNESS, areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
 
             flag = flags.get("PotionConfusion");
-            effectBuilder.newEffect(PotionEffectType.CONFUSION, areaTo.getValue(flag, false), areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.CONFUSION, areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
 
             flag = flags.get("PotionDamageResist");
-            effectBuilder.newEffect(PotionEffectType.DAMAGE_RESISTANCE , areaTo.getValue(flag, false), areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.DAMAGE_RESISTANCE , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
 
             flag = flags.get("PotionFastDigging");
-            effectBuilder.newEffect(PotionEffectType.FAST_DIGGING , areaTo.getValue(flag, false), areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.FAST_DIGGING , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
 
             flag = flags.get("PotionFireResist");
-            effectBuilder.newEffect(PotionEffectType.FIRE_RESISTANCE , areaTo.getValue(flag, false), areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.FIRE_RESISTANCE , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
 
             flag = flags.get("PotionHealthBoost");
-            effectBuilder.newEffect(PotionEffectType.HEALTH_BOOST , areaTo.getValue(flag, false), areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.HEALTH_BOOST , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
 
             flag = flags.get("PotionIncreaseDamage");
-            effectBuilder.newEffect(PotionEffectType.INCREASE_DAMAGE , areaTo.getValue(flag, false), areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.INCREASE_DAMAGE , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
 
             flag = flags.get("PotionInvisibility");
-            effectBuilder.newEffect(PotionEffectType.INVISIBILITY , areaTo.getValue(flag, false), areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.INVISIBILITY , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
 
             flag = flags.get("PotionJump");
-            effectBuilder.newEffect(PotionEffectType.JUMP , areaTo.getValue(flag, false), areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.JUMP , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
 
             flag = flags.get("PotionNightVision");
-            effectBuilder.newEffect(PotionEffectType.NIGHT_VISION , areaTo.getValue(flag, false), areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.NIGHT_VISION , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
 
             flag = flags.get("PotionPoison");
-            effectBuilder.newEffect(PotionEffectType.POISON , areaTo.getValue(flag, false), areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.POISON , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
 
             flag = flags.get("PotionRegeneration");
-            effectBuilder.newEffect(PotionEffectType.REGENERATION , areaTo.getValue(flag, false), areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.REGENERATION , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
 
             flag = flags.get("PotionSaturation");
-            effectBuilder.newEffect(PotionEffectType.SATURATION , areaTo.getValue(flag, false), areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.SATURATION , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
 
             flag = flags.get("PotionSlow");
-            effectBuilder.newEffect(PotionEffectType.SLOW , areaTo.getValue(flag, false), areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.SLOW , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
 
             flag = flags.get("PotionSlowDigging");
-            effectBuilder.newEffect(PotionEffectType.SLOW_DIGGING , areaTo.getValue(flag, false), areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.SLOW_DIGGING , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
 
             flag = flags.get("PotionSpeed");
-            effectBuilder.newEffect(PotionEffectType.SPEED , areaTo.getValue(flag, false), areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.SPEED , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
 
             flag = flags.get("PotionWaterBreathing");
-            effectBuilder.newEffect(PotionEffectType.WATER_BREATHING , areaTo.getValue(flag, false), areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.WATER_BREATHING , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
 
             flag = flags.get("PotionWeakness");
-            effectBuilder.newEffect(PotionEffectType.WEAKNESS , areaTo.getValue(flag, false), areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.WEAKNESS , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
 
             for(PotionEffect p : effectBuilder.addEffects) {
                 player.addPotionEffect(p, true);

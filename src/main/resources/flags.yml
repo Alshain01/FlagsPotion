@@ -7,7 +7,7 @@ Flag:
     Description: Warps players vision as they enter the area.
     Player: false
     Default: false
-  PotionDamageResistance:
+  PotionDamageResist:
     Description: Decreases damage dealt to the player in the area.
     Player: false
     Default: false
@@ -15,7 +15,7 @@ Flag:
     Description: Increases dig speed in the area.
     Player: false
     Default: false
-  PotionFireResistance:
+  PotionFireResist:
     Description: Stops fire damage in the area.
     Player: false
     Default: false
