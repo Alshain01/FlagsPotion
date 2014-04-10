@@ -1,11 +1,12 @@
 package io.github.alshain01.flagspotion;
 
-import io.github.alshain01.flags.Flag;
+import io.github.alshain01.flags.api.Flag;
 import io.github.alshain01.flags.Flags;
-import io.github.alshain01.flags.ModuleYML;
-import io.github.alshain01.flags.area.Area;
-import io.github.alshain01.flags.events.PlayerChangedUniqueAreaEvent;
+import io.github.alshain01.flags.api.FlagsAPI;
+import io.github.alshain01.flags.api.area.Area;
+import io.github.alshain01.flags.api.event.PlayerChangedUniqueAreaEvent;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -15,10 +16,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Flags Potion - Module that adds potion effect flags to the plug-in Flags.
@@ -42,22 +40,21 @@ public class FlagsPotion extends JavaPlugin {
         }
 
         // Connect to the data file and register the flags
-        Set<Flag> flags = Flags.getRegistrar().register(new ModuleYML(this, "flags.yml"), "Potion");
+        YamlConfiguration flagConfig = YamlConfiguration.loadConfiguration(getResource("flags.yml"));
+        Collection<Flag> flags = FlagsAPI.getRegistrar().registerFlag(flagConfig, "Potion");
         Map<String, Flag> flagMap = new HashMap<String, Flag>();
         for(Flag f : flags) {
             flagMap.put(f.getName(), f);
         }
 
         // Load plug-in events and data
-        Bukkit.getServer().getPluginManager().registerEvents(new AreaListener(this, flagMap), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new AreaListener(flagMap), this);
     }
 
     private class AreaListener implements Listener {
-        private final JavaPlugin plugin;
         private final Map<String, Flag> flags;
 
-        AreaListener(JavaPlugin plugin, Map<String, Flag> flags) {
-            this.plugin = plugin;
+        AreaListener(Map<String, Flag> flags) {
             this.flags = flags;
         }
 
@@ -69,58 +66,58 @@ public class FlagsPotion extends JavaPlugin {
             final EffectCollectionBuilder effectBuilder = new EffectCollectionBuilder();
 
             Flag flag = flags.get("PotionBlindness");
-            effectBuilder.newEffect(PotionEffectType.BLINDNESS, areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.BLINDNESS, areaTo.getState(flag), !areaFrom.getState(flag));
 
             flag = flags.get("PotionConfusion");
-            effectBuilder.newEffect(PotionEffectType.CONFUSION, areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.CONFUSION,  areaTo.getState(flag), !areaFrom.getState(flag));
 
             flag = flags.get("PotionDamageResist");
-            effectBuilder.newEffect(PotionEffectType.DAMAGE_RESISTANCE , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.DAMAGE_RESISTANCE ,  areaTo.getState(flag), !areaFrom.getState(flag));
 
             flag = flags.get("PotionFastDigging");
-            effectBuilder.newEffect(PotionEffectType.FAST_DIGGING , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.FAST_DIGGING ,  areaTo.getState(flag), !areaFrom.getState(flag));
 
             flag = flags.get("PotionFireResist");
-            effectBuilder.newEffect(PotionEffectType.FIRE_RESISTANCE , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.FIRE_RESISTANCE , areaTo.getState(flag), !areaFrom.getState(flag));
 
             flag = flags.get("PotionHealthBoost");
-            effectBuilder.newEffect(PotionEffectType.HEALTH_BOOST , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.HEALTH_BOOST , areaTo.getState(flag), !areaFrom.getState(flag));
 
             flag = flags.get("PotionIncreaseDamage");
-            effectBuilder.newEffect(PotionEffectType.INCREASE_DAMAGE , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.INCREASE_DAMAGE , areaTo.getState(flag), !areaFrom.getState(flag));
 
             flag = flags.get("PotionInvisibility");
-            effectBuilder.newEffect(PotionEffectType.INVISIBILITY , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.INVISIBILITY , areaTo.getState(flag), !areaFrom.getState(flag));
 
             flag = flags.get("PotionJump");
-            effectBuilder.newEffect(PotionEffectType.JUMP , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.JUMP , areaTo.getState(flag), !areaFrom.getState(flag));
 
             flag = flags.get("PotionNightVision");
-            effectBuilder.newEffect(PotionEffectType.NIGHT_VISION , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.NIGHT_VISION , areaTo.getState(flag), !areaFrom.getState(flag));
 
             flag = flags.get("PotionPoison");
-            effectBuilder.newEffect(PotionEffectType.POISON , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.POISON , areaTo.getState(flag), !areaFrom.getState(flag));
 
             flag = flags.get("PotionRegeneration");
-            effectBuilder.newEffect(PotionEffectType.REGENERATION , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.REGENERATION , areaTo.getState(flag), !areaFrom.getState(flag));
 
             flag = flags.get("PotionSaturation");
-            effectBuilder.newEffect(PotionEffectType.SATURATION , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.SATURATION , areaTo.getState(flag), !areaFrom.getState(flag));
 
             flag = flags.get("PotionSlow");
-            effectBuilder.newEffect(PotionEffectType.SLOW , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.SLOW , areaTo.getState(flag), !areaFrom.getState(flag));
 
             flag = flags.get("PotionSlowDigging");
-            effectBuilder.newEffect(PotionEffectType.SLOW_DIGGING , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.SLOW_DIGGING , areaTo.getState(flag), !areaFrom.getState(flag));
 
             flag = flags.get("PotionSpeed");
-            effectBuilder.newEffect(PotionEffectType.SPEED , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.SPEED , areaTo.getState(flag), !areaFrom.getState(flag));
 
             flag = flags.get("PotionWaterBreathing");
-            effectBuilder.newEffect(PotionEffectType.WATER_BREATHING , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.WATER_BREATHING , areaTo.getState(flag), !areaFrom.getState(flag));
 
             flag = flags.get("PotionWeakness");
-            effectBuilder.newEffect(PotionEffectType.WEAKNESS , areaTo.getValue(flag, false), !areaFrom.getValue(flag, false));
+            effectBuilder.newEffect(PotionEffectType.WEAKNESS , areaTo.getState(flag), !areaFrom.getState(flag));
 
             for(PotionEffect p : effectBuilder.addEffects) {
                 player.addPotionEffect(p, true);
