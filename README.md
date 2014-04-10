@@ -2,6 +2,7 @@ FlagsPotion
 ===========
 
 THIS MODULE IS EXPIRAMENTAL AND MAY NOT FUNCTION PROPERLY
+
 Module that adds potion effect flags to the Flags plugin.
 
 Website: <http://dev.bukkit.org/bukkit-plugins/flags/>  
